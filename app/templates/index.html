@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+
+<h3 class="text-center mt-5 mb-5">Основные средства</h3>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Наименование</th>
+      <th scope="col">Инвентарный номер</th>
+      <th scope="col">Оставточная стоимость</th>
+      <th scope="col">Категория</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in items %}
+    <tr>
+      <th scope="row">{{ item.id }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.category.code }} {{ item.code_end }}</td>
+      <td>{{ item.summ }}</td>
+      <td>{{ item.category.name }}</td>
+      {% if current_user.is_authenticated %}
+      <td><a class='btn btn-warning' href="{{ url_for('item_update', id=item.id) }}">Изменить</a></td>
+      <td><a class='btn btn-danger' href="{{ url_for('item_delete', id=item.id) }}">Удалить</a></td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock content %}

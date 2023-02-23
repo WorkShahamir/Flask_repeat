@@ -1,0 +1,7 @@
+Flask~=2.2.3
+Flask-SQLAlchemy
+Flask-WTF
+Flask-Migrate
+wtforms~=3.0.1
+SQLAlchemy~=2.0.4
+alembic~=1.9.4
